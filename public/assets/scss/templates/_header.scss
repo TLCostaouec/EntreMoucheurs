@@ -1,0 +1,156 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+header {
+    
+    padding: 0;
+    margin-bottom: $spacing-xl;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    .banner {
+        height: 50px;
+        background: url(../img/banner.webp) center/cover no-repeat;
+        @include flex-center;
+        justify-content: space-between;
+        padding: 0 $spacing-md;
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            margin-left: $spacing-xs;
+            color: $color-secondary-cream;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+          
+            .logo-title {
+              margin: 0;
+              font-size: $font-size-subtitle;
+              text-transform: none;
+          
+                a {
+                    color: $color-secondary-cream;
+                    text-decoration: none;
+                    @include transition(text-decoration);
+                }
+            }
+        }
+
+        .burger {
+            @include flex-column;
+            justify-content: center;
+            border: none;
+            background: none;
+            gap: $spacing-xs;
+            width: 30px;
+            height: 25px;
+            cursor: pointer;
+            z-index: 3;
+
+            span {
+                height: 3px;
+                width: 100%;
+                background-color: $color-secondary-cream;
+                border-radius: 2px;
+            }
+        }
+    }
+
+    nav {
+        padding: $spacing-sm;
+        background-color: $color-main-blue;
+        border-radius: 0 0 50px 50px;
+        @include shadow-light;
+        position: relative;
+
+        ul {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: $color-main-blue;
+            border-radius: 0 0 20px 20px;
+            padding: $spacing-md;
+
+            li {
+                margin: $spacing-sm;
+
+                a {
+                    text-align: center;
+                    text-decoration: none;
+                    color: $color-secondary-cream;
+                    font-weight: bold;
+                    letter-spacing: 2px;
+                    padding: $spacing-sm $spacing-md;
+                    border-radius: $spacing-xs;
+                    @include transition(background-color);
+
+                    &:hover,
+                    &.active {
+                        background-color: $color-secondary-cream;
+                        color: $color-main-blue;
+                    }
+                }
+            }
+        }
+
+        &.open {
+            ul {
+                display: flex;
+            }
+        }
+    }
+
+    // responsive tablette
+    @include respond(md) {
+        .banner {
+            height: 60px;
+    
+            .burger {
+                display: none;
+            }
+        
+            .banner-content {
+                margin-left: $spacing-lg;
+                    
+                .logo-title {
+                    font-size: $font-size-title;
+                }
+            }
+        }
+    
+        nav {
+            padding: $spacing-sm;
+    
+            ul {
+                @include flex-row;
+                justify-content: center;
+                align-items: center;
+                background: none;
+                padding: 0;
+                margin: 0;
+                max-height: none;
+            }
+        }
+    }
+    
+    // responsive desktop
+    @include respond(lg) {
+        .banner {
+            height: 70px;
+    
+            .banner-content {
+                margin-left: $spacing-xl;
+            }
+        }
+    }
+}

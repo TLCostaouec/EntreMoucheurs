@@ -1,0 +1,113 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.contact-container {
+    @include container(400px);
+    margin: $spacing-xl auto;
+    padding: $spacing-lg;
+    border-radius: 10px;
+    @include shadow-light;
+
+    h1 {
+        text-align: center;
+        color: $color-main-blue;
+        font-size: $font-size-title;
+        margin-bottom: $spacing-md;
+    }
+
+    .intro {
+        text-align: center;
+        color: $color-text-light-30;
+        font-size: $font-size-base;
+        margin-bottom: $spacing-xl;
+    }
+
+    .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-lg;
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: $spacing-xs;
+
+            label {
+                font-weight: bold;
+                font-size: $font-size-small;
+            }
+
+            input,
+            textarea {
+                padding: $spacing-sm;
+                border: 1px solid $color-main-sand;
+                border-radius: 5px;
+                background-color: $color-cream-light-50;
+                font-family: $font-text;
+                font-size: $font-size-base;
+
+                &:focus {
+                    border-color: $color-main-blue;
+                    box-shadow: 0 0 0 1px rgba($color-main-blue, 0.3);
+                    outline: none;
+                }
+                
+                &::placeholder {
+                    color: $color-text-light-30;
+                }
+                
+                // empêche le navigateur d’appliquer un fond de couleur différent lors de l'autocomplétion
+                &:-webkit-autofill {
+                    box-shadow: 0 0 0px 1000px $color-cream-light-50 inset !important;
+                    -webkit-text-fill-color: $color-text !important;
+                    font-family: $font-text;
+                }
+            }
+        }
+
+        .btn-validate {
+            align-self: center;
+            width: 20vh;
+            background-color: $color-main-blue;
+            color: $color-secondary-cream;
+            padding: $spacing-sm $spacing-md;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            @include transition(background-color);
+
+            &:hover {
+                background-color: $color-moss-dark-30;
+            }
+        }
+    }
+
+    .success {
+        color: $color-main-green;
+        background-color: rgba($color-main-green, 0.1);
+        font-size: $font-size-small;
+        padding: $spacing-xs $spacing-sm;
+        border-radius: 5px;
+        text-align: center;
+        margin-bottom: $spacing-md;
+    }
+
+    .error {
+        color: $color-danger;
+        background-color: rgba($color-danger, 0.1);
+        font-size: $font-size-small;
+        margin-bottom: $spacing-md;
+        border-radius: 5px;
+    }
+
+    @include respond(md) {
+        @include container(600px);
+    }
+    @include respond(lg) {
+        @include container(1000px);
+        margin: $spacing-xl * 1.5 auto;
+    }
+}

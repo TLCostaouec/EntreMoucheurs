@@ -1,0 +1,43 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+main {
+    .error-container {
+        @include container(400px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: $spacing-xl auto;
+        padding: $spacing-lg;
+        background-color: $color-cream-light-10;
+        border-radius: 10px;
+        @include shadow-light;
+    
+        h1 {
+            font-size: $font-size-title;
+            color: $color-main-blue;
+            margin-bottom: $spacing-md;
+        }
+    
+        p {
+            font-size: $font-size-base;
+            color: $color-text;
+            line-height: 1.6;
+        }
+    }
+    
+    // Responsive
+    @include respond(md) {
+        .error-container {
+            @include container(600px);
+        }
+    }
+    
+    @include respond(lg) {
+        .error-container {
+            @include container(800px);
+        }
+    }
+}

@@ -1,0 +1,157 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.auth-container {
+    @include container(400px);
+    margin: $spacing-xl auto;
+    padding: $spacing-lg;
+    background-color: $color-secondary-cream;
+    border-radius: 10px;
+    @include shadow-light;
+
+    h1 {
+        text-align: center;
+        font-size: $font-size-subtitle;
+        color: $color-main-blue;
+        margin-bottom: $spacing-lg;
+    }
+    
+    form {
+        @include flex-column;
+        gap: $spacing-md;
+        
+        .field-group {
+            @include flex-column;
+            gap: $spacing-xs;
+            margin-bottom: $spacing-xs;
+            
+            .label-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                
+                label {
+                    font-weight: bold;
+                    font-size: $font-size-small;
+                }
+
+            }
+            
+            input {
+
+                margin-top: $spacing-xs;
+                padding: $spacing-sm;
+                font-size: $font-size-base;
+                border: 1px solid $color-main-sand;
+                border-radius: 5px;
+                font-family: $font-text;
+                color: $color-text;
+                background-color: $color-cream-light-50;
+                @include transition(border-color, box-shadow);
+                
+                &:focus {
+                    border-color: $color-main-blue;
+                    box-shadow: 0 0 0 1px rgba($color-main-blue, 0.3);
+                    outline: none;
+                }
+                
+                &::placeholder {
+                    color: $color-text-light-30;
+                }
+                
+                // empêche le navigateur d’appliquer un fond de couleur différent lors de l'autocomplétion
+                &:-webkit-autofill {
+                    box-shadow: 0 0 0px 1000px $color-cream-light-50 inset !important;
+                    -webkit-text-fill-color: $color-text !important;
+                    font-family: $font-text;
+                }
+            }
+            
+        }
+        button {
+            background-color: $color-main-blue;
+            color: $color-secondary-cream;
+            font-weight: bold;
+            border: none;
+            padding: $spacing-sm;
+            border-radius: 5px;
+            cursor: pointer;
+            @include transition(background-color);
+            
+            &:hover {
+                background-color: $color-secondary-green-moss;
+            }
+        }
+
+    }
+    
+    .error {
+        color: $color-danger;
+        background-color: rgba($color-danger, 0.1);
+        font-size: $font-size-small;
+        margin: 0;
+        padding: $spacing-xs $spacing-sm;
+        border-radius: 5px;
+        text-align: center;
+    }
+    
+    p {
+        text-align: center;
+        margin-top: $spacing-md;
+        font-size: $font-size-small;
+
+        a {
+            color: $color-main-blue;
+            text-decoration: underline;
+
+            &:hover {
+                color: $color-secondary-blue-deep;
+            }
+        }
+    }
+}
+
+// responsive tablette
+@include respond(md) {
+    .auth-container {
+        @include container(500px);
+        margin: $spacing-xl * 2 auto;
+  
+        form {
+            .field-group {
+                margin-bottom: $spacing-sm;
+                .label-wrapper {
+                    .error {
+                        font-size: $font-size-small;
+                    }
+                }
+            }
+        }
+    }
+}
+  
+// responsive desktop
+@include respond(lg) {
+    .auth-container {
+        @include container(600px);
+        margin: $spacing-xl * 3 auto;
+  
+        h1 {
+            font-size: $font-size-title;
+        }
+  
+        form {
+            .field-group {
+                margin-bottom: $spacing-md;
+
+                input {
+                    font-size: 1.1rem;
+                }
+            }
+            
+            button {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}

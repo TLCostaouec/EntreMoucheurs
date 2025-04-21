@@ -1,0 +1,353 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.spot-container {
+    @include container();
+    margin: $spacing-xl auto;
+
+    .spot-title-wrapper {
+        text-align: center;
+
+        h1 {
+            display: inline-block; // largeur = texte
+            position: relative;
+            text-align: center;
+            font-size: $font-size-subtitle;
+            color: $color-main-blue;
+            margin-bottom: $spacing-xl;
+        }
+    }
+
+    .success {
+        color: $color-main-green;
+        background-color: rgba($color-main-green, 0.1);
+        font-size: $font-size-small;
+        padding: $spacing-xs $spacing-sm;
+        border-radius: 5px;
+        text-align: center;
+        margin-bottom: $spacing-md;
+    }
+
+    .spot-actions {
+        @include flex-column;
+        align-items: center;
+        gap: $spacing-lg;
+        margin: 0 0 $spacing-lg 0;
+
+        .create-spot-content {
+            order: 0;
+            display: flex;
+            justify-content: center;
+
+            .btn-validate {
+                width: 248px;
+                background-color: $color-main-blue;
+                color: $color-secondary-cream;
+                padding: $spacing-sm + $spacing-xs $spacing-md;
+                border: none;
+                border-radius: 5px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                @include transition(background-color);
+
+                &:hover {
+                    background-color: $color-moss-dark-30;
+                }
+            }
+        }
+
+        .search-content {
+            order: 1;
+
+            form {
+                display: flex;
+                gap: $spacing-sm;
+
+                input {
+                    padding: $spacing-sm;
+                    font-size: $font-size-base;
+                    border: 1px solid $color-main-sand;
+                    border-radius: 5px;
+                    font-family: $font-text;
+                    color: $color-text;
+                    background-color: $color-cream-light-50;
+                    @include transition(border-color, box-shadow);
+
+                    &:focus {
+                        border-color: $color-main-blue;
+                        box-shadow: 0 0 0 1px rgba($color-main-blue, 0.3);
+                        outline: none;
+                    }
+
+                    &::placeholder {
+                        color: rgba($color-text-light-30, 0.5);
+                    }
+
+                    // empêche le navigateur d’appliquer un fond de couleur différent lors de l'autocomplétion
+                    &:-webkit-autofill {
+                        box-shadow: 0 0 0px 1000px $color-cream-light-50 inset !important;
+                        -webkit-text-fill-color: $color-text !important;
+                        font-family: $font-text;
+                    }
+                }
+
+                button {
+                    background-color: $color-main-blue;
+                    color: $color-secondary-cream;
+                    padding: $spacing-sm $spacing-md;
+                    border: none;
+                    border-radius: 5px;
+                    font-weight: bold;
+
+                    &:hover {
+                        background-color: $color-moss-dark-30;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .sort-links {
+        display: flex;
+        justify-content: center;
+        gap: $spacing-md;
+        margin: 0 auto $spacing-lg;
+        padding: $spacing-sm $spacing-md;
+        background-color: $color-cream-light-50;
+        border: none;
+        border-radius: 5px;
+        max-width: 300px;
+        @include shadow-light;
+
+        a {
+            color: $color-main-blue;
+            font-weight: bold;
+
+            &:hover,
+            &.active {
+                color: $color-moss-dark-30;
+            }
+        }
+    }
+
+    .spot-list {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $spacing-lg;
+        margin: 0 0 $spacing-lg 0;
+
+        .spot-card {
+            width: 100%;
+            background-color: $color-cream-light-50;
+            border-radius: 10px;
+            overflow: hidden;
+            max-width: 300px;
+            min-height: 400px;
+            margin: 0 auto;
+            @include shadow-light;
+            @include flex-column;
+            @include transition(transform);
+
+            &:hover {
+                transform: translateY(-5px);
+            }
+
+            .thumbnail {
+                width: 100%;
+                height: 180px;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    min-width: 100%;
+                    min-height: 100%;
+                }
+            }
+
+            .spot-info {
+                padding: $spacing-md;
+                @include flex-column;
+                height: 65%;
+
+                .spot-title-wrapper {
+                    h2 {
+                        display: inline-block; // largeur = texte
+                        position: relative;
+                        text-transform: uppercase;
+                        font-size: $font-size-base;
+                        margin-bottom: $spacing-sm;
+    
+                        &::after {
+                            content: "";
+                            display: block;
+                            width: 80%; // largeur de ton underline
+                            height: 2px; // épaisseur de l'underline
+                            background-color: $color-main-blue; // couleur de ton underline
+                            margin: $spacing-xs auto 0; // pour le centrer
+                        }
+                    }
+                }
+
+                p {
+                    font-size: $font-size-small;
+                    margin-bottom: $spacing-xs;
+                    color: $color-text-light-10;
+
+                    strong {
+                        font-weight: bold;
+                    }
+                }
+
+                .spot-card-actions {
+                    display: flex;
+                    gap: $spacing-sm;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    margin-top: auto;
+
+                    .view-more-btn {
+                        flex: 1;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        padding: $spacing-sm $spacing-md;
+                        background-color: $color-main-blue;
+                        color: $color-secondary-cream;
+                        border: none;
+                        border-radius: 5px;
+                        font-weight: bold;
+                        @include transition(background-color);
+
+                        &:hover {
+                            background-color: $color-moss-dark-30;
+                        }
+                    }
+
+                    .btn {
+                        flex: 1;
+                        padding: $spacing-sm $spacing-md;
+                        border: none;
+                        border-radius: 5px;
+                        font-weight: bold;
+                        cursor: pointer;
+
+                        &.btn-danger {
+                            background-color: $color-danger;
+                            color: $color-secondary-cream;
+
+                            &:hover {
+                                background-color: $color-danger-dark-10;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: $spacing-sm;
+        margin-bottom: $spacing-xl;
+
+        a,
+        .dots {
+            display: inline-block;
+            padding: $spacing-xs $spacing-sm;
+            border: 1px solid $color-main-sand;
+            border-radius: 5px;
+            font-weight: bold;
+            color: $color-main-blue;
+            background-color: $color-cream-light-50;
+            text-align: center;
+            min-width: 32px;
+            @include transition(background-color);
+
+            &:hover {
+                background-color: $color-main-blue;
+                color: $color-secondary-cream;
+            }
+
+            &.active {
+                background-color: $color-main-blue;
+                color: $color-secondary-cream;
+                pointer-events: none;
+            }
+        }
+
+        .dots {
+            border: none;
+            color: $color-text-light-30;
+            background: transparent;
+            cursor: default;
+        }
+    }
+}
+
+@include respond(sm) {
+    .spot-container {
+        .spot-actions {
+            .create-spot-content {
+                .btn-validate {
+                    width: 306px;
+                }
+            }
+
+            .search-content {
+                form {
+                    input {
+                        width: 250px;
+                    }
+                }
+            }
+        }
+
+        .spot-list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@include respond(md) {
+    .spot-container {
+        .spot-actions {
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 0 0 $spacing-lg 0;
+
+            .create-spot-content {
+                order: 1;
+            }
+
+            .search-content {
+                order: 0;
+
+                form {
+                    input {
+                        width: 300px;
+                    }
+                }
+            }
+        }
+
+        .spot-list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+}
+
+@include respond(xl) {
+    .spot-container {
+        margin: $spacing-xl * 1.5 auto;
+
+        .spot-list {
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}

@@ -1,0 +1,131 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: $spacing-xl;
+    padding-bottom: $spacing-lg;
+    background-color: $color-main-sand;
+    border-radius: 50px 50px 0 0;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+
+    .footer-content {
+        @include container(400px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: $spacing-lg $spacing-md $spacing-sm;
+
+        .footer-links {
+            display: flex;
+            gap: $spacing-lg;
+
+            a {
+                font-size: $font-size-small;
+                color: $color-text;
+                font-weight: bold;
+                text-align: center;
+                text-decoration: underline;
+
+                &:hover {
+                    color: $color-main-blue;
+                }
+            }
+        }
+
+        .footer-logo img {
+            max-width: 100px;
+        }
+
+    }
+
+    .copyright {
+        font-size: $font-size-small;
+        color: $color-text-light-30;
+        margin-top: $spacing-sm;
+    }
+}
+
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: $color-cream-light-50;
+    padding: $spacing-sm $spacing-md;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    font-size: $font-size-small;
+
+    p {
+        margin: 0;
+        flex: 1;
+        a {
+            text-decoration: underline;
+        }
+    }
+
+    .cookie-actions {
+        display: flex;
+        gap: $spacing-sm;
+
+        button {
+            padding: $spacing-xs $spacing-md;
+            font-weight: bold;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+
+            &#accept-cookies {
+                background: $color-main-blue;
+                color: $color-secondary-cream;
+
+                &:hover {
+                    background: $color-secondary-green-moss;
+                }
+            }
+
+            &#reject-cookies {
+                background: $color-main-sand;
+                color: $color-text;
+
+                &:hover {
+                    background: $color-sand-light-10;
+                }
+            }
+        }
+    }
+}
+
+.cookie-banner[hidden] {
+    display: none !important;
+}
+
+@include respond(md) {
+    .footer {
+        .footer-content {
+            @include container(600px);
+
+            .footer-logo img {
+                max-width: 120px;
+            }
+        }
+    }
+}
+
+@include respond(lg) {
+    .footer {
+        .footer-content {
+            @include container(1000px);
+        }
+    }
+}

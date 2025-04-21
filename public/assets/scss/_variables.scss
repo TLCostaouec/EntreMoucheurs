@@ -1,0 +1,91 @@
+@use 'sass:color';
+
+// couleurs principales
+
+$color-main-blue: #5DA8A3;
+$color-main-green: #A7C4A0;
+$color-main-sand: #EAD8C0;
+$color-text: #241914;
+
+// couleurs secondaires
+
+$color-secondary-cream: #F5F1EA;
+$color-secondary-green-moss: #7C9D8E;
+$color-secondary-blue-deep: #3B6D74;
+
+// couleurs complémentaires
+
+$color-danger: #d9534f;
+
+// variations couleurs
+$color-sand-light-10: color.scale($color-main-sand, $lightness: 10%);
+$color-cream-light-10: color.scale($color-secondary-cream, $lightness: 10%);
+$color-cream-light-50: color.scale($color-secondary-cream, $lightness: 50%);
+$color-cream-light-80: color.scale($color-secondary-cream, $lightness: 80%);
+$color-danger-dark-10: color.scale($color-danger, $lightness: -10%);
+$color-text-light-30: color.scale($color-text, $lightness: 30%);
+$color-text-light-10: color.scale($color-text, $lightness: 10%);
+$color-green-dark-10: color.scale($color-main-green, $lightness: -10%);
+$color-moss-dark-30: color.scale($color-secondary-green-moss, $lightness: -30%);
+$color-blue-dark-50: color.scale($color-main-blue, $lightness: -50%);
+$color-blue-dark-80: color.scale($color-main-blue, $lightness: -80%);
+$color-blue-light-80: color.scale($color-main-blue, $lightness: 80%);
+
+
+$color-main-admin-blue: #2c3e50;
+$color-main-admin-hover: color.scale($color-main-admin-blue, $lightness: 50%);
+$color-light-admin-hover: color.scale($color-main-admin-blue, $lightness: 80%);
+
+
+// typographies
+
+/* roboto-regular - latin */
+@font-face {
+    font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/roboto-v47-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  }
+
+/* playfair-display-sc-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Playfair Display SC';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/playfair-display-sc-v17-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+$font-text: 'Roboto';
+$font-title: 'Playfair Display SC';
+
+
+// tailles de police
+
+$font-size-base: 16px;
+$font-size-small: 0.875rem;
+$font-size-title: 1.8rem;
+$font-size-subtitle: 1.3rem;
+
+
+// espacements
+
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 48px;
+
+
+// largeurs
+
+$container-width: 1200px;
+
+
+// responsive
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;

@@ -1,0 +1,93 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// reset
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    height: 100%;
+}
+
+// base body
+body {
+    font-family: $font-text;
+    color: $color-text;
+    background-color: $color-secondary-cream;
+    font-size: $font-size-base;
+}
+
+.site-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+}
+
+main {
+    flex: 1;
+}
+
+// titres
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-title;
+    text-transform: uppercase;
+}
+
+h1 {
+    font-size: $font-size-subtitle !important;
+
+    @include respond(lg) {
+        font-size: $font-size-title !important;
+    }
+}
+
+// liens
+a {
+    color: $color-main-blue;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: $color-secondary-blue-deep;
+    }
+}
+
+// boutons
+button {
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+// inputs & form
+input, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+}
+
+// listes
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sr-only {
+    position: absolute !important;
+    width: 1px; 
+    height: 1px; 
+    padding: 0; 
+    margin: -1px; 
+    overflow: hidden; 
+    clip: rect(0, 0, 0, 0); 
+    white-space: nowrap; 
+    border: 0;
+}

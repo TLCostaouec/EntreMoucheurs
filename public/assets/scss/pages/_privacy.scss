@@ -1,0 +1,57 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.legal-container {
+    @include container(400px);
+    margin: $spacing-xl auto;
+    padding: $spacing-lg;
+    border-radius: 10px;
+    @include shadow-light;
+
+    h1 {
+        text-align: center;
+        font-size: $font-size-title;
+        color: $color-main-blue;
+        margin-bottom: $spacing-xl;
+    }
+
+    section {
+        margin-bottom: $spacing-xl;
+
+        h2 {
+            font-size: $font-size-subtitle;
+            color: $color-main-blue;
+            margin-bottom: $spacing-sm;
+            border-left: 4px solid $color-main-blue;
+            padding-left: $spacing-sm;
+        }
+
+        p {
+            font-size: $font-size-base;
+            line-height: 1.6;
+            margin-bottom: $spacing-md;
+            color: $color-text;
+        }
+
+        ul {
+            padding-left: $spacing-lg;
+            margin-bottom: $spacing-md;
+
+            li {
+                font-size: $font-size-base;
+                color: $color-text;
+                margin-bottom: $spacing-xs;
+                list-style: disc;
+            }
+        }
+    }
+
+    @include respond(md) {
+        @include container(600px);
+    }
+    
+    @include respond(lg) {
+        @include container(1000px);
+        margin: $spacing-xl * 1.5 auto;
+    }
+}

@@ -1,0 +1,301 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+body.admin {
+
+    // --- navigation ---
+    .menu {
+        background-color: $color-main-admin-blue !important;
+
+        ul {
+            background-color: $color-main-admin-blue !important;
+        }
+
+        a {
+            color: $color-secondary-cream;
+
+            &:hover,
+            &.active {
+                background-color: $color-secondary-cream;
+                color: $color-main-admin-blue;
+            }
+        }
+    }
+
+    // --- boutons génériques uniquement ---
+    button:not(.btn-success):not(.btn-danger):not(.btn-cancel),
+    .btn:not(.btn-success):not(.btn-danger):not(.btn-cancel),
+    .view-more-btn {
+        background-color: $color-main-admin-blue !important;
+        color: $color-secondary-cream;
+
+        &:hover {
+            background-color: $color-main-admin-hover !important;
+        }
+    }
+
+    // --- titres globaux ---
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: $color-main-admin-blue !important;
+    }
+
+    .pagination {
+        a {
+            color: $color-main-admin-blue !important;
+
+            &:hover {
+                background-color: $color-main-admin-blue !important;
+                color: $color-secondary-cream !important;
+            }
+        }
+
+        a.active {
+            background-color: $color-main-admin-blue !important;
+            color: $color-secondary-cream !important;
+        }
+    }
+
+    // --- liens de tri ---
+    .sort-links {
+        a {
+            color: $color-main-admin-blue !important;
+
+            &:hover,
+            &.active {
+                color: $color-main-admin-hover !important;
+            }
+        }
+    }
+
+    // --- spot détaillé - header / hero ---
+    .modal-spot-header {
+        background-color: $color-main-admin-blue !important;
+        color: $color-secondary-cream !important;
+
+        h2 {
+            color: $color-secondary-cream !important;
+        }
+
+        .modal-close {
+            color: $color-secondary-cream !important;
+
+            &:hover {
+                color: $color-text !important;
+            }
+        }
+    }
+
+    // --- spot détaillé - body ---
+    .water-temp {
+        color: $color-main-admin-blue !important;
+    }
+
+    .fish-species li::before {
+        color: $color-main-admin-blue !important;
+    }
+
+    // --- scrollbar personnalisé ---
+    .modal-spot-content {
+        .ps__rail-y {
+            background-color: $color-cream-light-80 !important;
+        }
+
+        .ps__thumb-y {
+            background-color: $color-main-admin-blue !important;
+
+            &:hover {
+                background-color: $color-main-admin-hover !important;
+            }
+        }
+    }
+
+    .admin-container {
+        @include container();
+        margin: $spacing-xl auto;
+        padding: $spacing-lg;
+        border-radius: 10px;
+        @include shadow-light;
+
+        h1 {
+            text-align: center;
+            margin-bottom: $spacing-lg;
+        }
+
+        .welcome {
+            padding: $spacing-lg;
+            font-size: $font-size-subtitle;
+            text-align: center;
+            color: $color-main-admin-hover;
+        }
+
+
+        section {
+            margin-bottom: $spacing-xl * 2;
+
+
+            h2 {
+                font-size: $font-size-subtitle;
+                color: $color-main-admin-blue;
+                border-bottom: 2px solid $color-main-admin-blue;
+                padding-bottom: $spacing-xs;
+                margin-bottom: $spacing-lg;
+            }
+
+            form.search-admin {
+                display: flex;
+                flex-direction: column;
+                gap: $spacing-sm;
+                margin-bottom: $spacing-md;
+
+                input {
+                    padding: $spacing-sm $spacing-md;
+                    border: 1px solid $color-main-sand;
+                    border-radius: 5px;
+                    background-color: $color-cream-light-50;
+                    width: 100%;
+                }
+
+                button {
+                    background-color: $color-main-admin-blue;
+                    color: $color-secondary-cream;
+                    border: none;
+                    padding: $spacing-sm $spacing-md;
+                    border-radius: 5px;
+
+                    &:hover {
+                        background-color: $color-main-admin-hover;
+                    }
+                }
+
+                .success {
+                    color: $color-main-green;
+                    background-color: rgba($color-main-green, 0.1);
+                    font-size: $font-size-small;
+                    padding: $spacing-xs $spacing-sm;
+                    border-radius: 5px;
+                    text-align: center;
+                    margin-bottom: $spacing-md;
+                    flex: 1;
+                }
+            }
+        }
+
+        .admin-table-wrapper {
+            overflow-x: auto;
+            max-width: 100%;
+
+            .admin-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: $spacing-lg;
+
+                th,
+                td {
+                    border: 1px solid $color-cream-light-80;
+                    padding: $spacing-sm;
+                    text-align: center;
+                }
+
+                th {
+                    background-color: $color-main-admin-blue;
+                    color: $color-secondary-cream;
+                }
+
+                tr:nth-child(even) {
+                    background-color: $color-cream-light-50;
+                }
+
+                tr:hover {
+                    background-color: $color-light-admin-hover;
+                }
+
+                .btn-danger {
+                    background-color: $color-danger;
+                    color: $color-secondary-cream;
+                    border: none;
+                    padding: $spacing-sm $spacing-md;
+                    border-radius: 5px;
+
+                    &:hover {
+                        background-color: $color-danger-dark-10;
+                    }
+                }
+
+                .fa-lock {
+                    background-color: $color-main-admin-blue;
+                    color: $color-secondary-cream;
+                    border: none;
+                    padding: $spacing-sm $spacing-md;
+                    border-radius: 5px;
+                }
+
+                .view-more-btn {
+                    background-color: $color-main-green;
+                    color: $color-secondary-cream;
+                    border: none;
+                    padding: $spacing-sm $spacing-md;
+                    border-radius: 5px;
+                }
+            }
+        }
+
+        .pagination {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: $spacing-sm;
+            margin-top: $spacing-md;
+
+            a {
+                padding: $spacing-xs $spacing-sm;
+                border: 1px solid $color-main-sand;
+                border-radius: 5px;
+                font-weight: bold;
+                color: $color-main-admin-blue;
+                background-color: $color-cream-light-50;
+                text-align: center;
+                min-width: 32px;
+
+                &:hover {
+                    background-color: $color-main-admin-blue;
+                    color: $color-secondary-cream;
+                }
+
+                &.active {
+                    background-color: $color-main-admin-blue;
+                    color: $color-secondary-cream;
+                    pointer-events: none;
+                }
+            }
+        }
+    }
+}
+
+// Responsive tablette
+@include respond(sm) {
+    body.admin {
+        .admin-container {
+            margin: $spacing-xl * 1.5 auto;
+            
+            section {
+                form.search-admin {
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    align-items: center;
+
+                    input {
+                        max-width: 300px;
+                    }
+
+                    .success {
+                        margin-left: $spacing-md;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+}

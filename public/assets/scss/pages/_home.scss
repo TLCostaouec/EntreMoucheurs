@@ -1,0 +1,272 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.home-container {
+    @include container;
+    margin: $spacing-xl auto;
+
+    .intro {
+        text-align: center;
+        margin-bottom: $spacing-xl;
+    
+        .home-logo {
+            max-width: 20vh;
+            margin-bottom: $spacing-md;
+        }
+    
+        .intro-text {
+            font-size: $font-size-base;
+            color: $color-text;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    }
+    
+    .home-highlight {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-xl;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: $spacing-xl;
+    
+        .home-video {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            border-radius: 10px;
+            border: none;
+            @include shadow-light;
+          
+            .video-thumbnail {
+                width: 100%;
+                height: 100%;
+                display: block;
+                object-fit: cover;
+                object-position: center;
+            }
+            
+            .play-button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 3rem;
+                background-color: rgba($color-main-blue, 0.5);
+                padding: 0.5rem 1.5rem;
+                padding-left: 2rem;
+                border-radius: 10px;
+                color: $color-secondary-cream;
+                
+                &:hover {
+                  color: $color-main-blue;
+                  background-color: rgba($color-secondary-cream, 0.5);
+                }
+            }
+          }
+    
+        .home-stats {
+            text-align: center;
+    
+            h2 {
+                font-size: $font-size-subtitle;
+                color: $color-main-blue;
+                margin-bottom: $spacing-md;
+            }
+    
+            .stat-content {
+                display: flex;
+                justify-content: center;
+                gap: $spacing-lg;
+    
+                .stat {
+                    background-color: $color-cream-light-50;
+                    border-radius: 999px;
+                    padding: $spacing-md;
+                    width: 120px;
+                    height: 120px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    @include shadow-light;
+    
+                    dd {
+                        font-size: 2rem;
+                        font-weight: bold;
+                        color: $color-main-blue;
+                    }
+    
+                    dt {
+                        font-size: $font-size-small;
+                        color: $color-text-light-30;
+                    }
+                }
+            }
+        }
+    
+        // Responsive row layout à partir de medium
+        @include respond(md) {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+    
+            .home-video {
+                flex: 2;
+            }
+    
+            .home-stats {
+                flex: 1;
+                text-align: center;
+    
+                .stat-content {
+                    justify-content: center;
+                }
+            }
+        }
+    }    
+    
+    .last-spots-section {
+        h2 {
+            text-align: center;
+            margin-bottom: $spacing-lg;
+            color: $color-main-blue;
+            font-size: $font-size-subtitle;
+        }
+    
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x mandatory;
+            gap: $spacing-lg;
+            padding-top: $spacing-md;
+            padding-bottom: $spacing-md;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+    
+            .spot-card {
+                flex: 0 0 100%;
+                scroll-snap-align: center;
+                background-color: $color-cream-light-50;
+                border-radius: 10px;
+                overflow: hidden;
+                max-width: 300px;
+                margin: 0 auto;
+                @include shadow-light;
+                @include flex-column;
+                @include transition(transform);
+                position: relative;
+    
+                &:hover {
+                    transform: translateY(-5px);
+                }
+    
+                .thumbnail {
+                    width: 100%;
+                    height: 180px;
+                    overflow: hidden;
+    
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+                @include respond(md) {
+                        flex: 0 0 45%;
+                }
+                
+                @include respond(xl) {
+                        flex: 0 0 23%;
+                }
+                
+                .spot-info {
+                    padding: $spacing-md;
+                    @include flex-column;
+                    height: 65%;
+    
+                    h2 {
+                        font-size: $font-size-base;
+                        margin-bottom: $spacing-sm;
+                    }
+    
+                    p {
+                        font-size: $font-size-small;
+                        margin-bottom: $spacing-xs;
+                        color: $color-text-light-10;
+    
+                        strong {
+                            font-weight: bold;
+                        }
+                    }
+    
+                    .spot-card-actions {
+                        display: flex;
+                        gap: $spacing-sm;
+                        flex-wrap: wrap;
+                        align-items: center;
+                        margin-top: auto;
+    
+                        .view-more-btn {
+                            flex: 1;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding: $spacing-sm $spacing-md;
+                            background-color: $color-main-blue;
+                            color: $color-secondary-cream;
+                            border: none;
+                            border-radius: 5px;
+                            font-weight: bold;
+                            @include transition(background-color);
+    
+                            &:hover {
+                                background-color: $color-moss-dark-30;
+                            }
+                        }
+    
+                        .btn {
+                            flex: 1;
+                            padding: $spacing-sm $spacing-md;
+                            border: none;
+                            border-radius: 5px;
+                            font-weight: bold;
+                            cursor: pointer;
+    
+                            &.btn-danger {
+                                background-color: $color-danger;
+                                color: $color-secondary-cream;
+    
+                                &:hover {
+                                    background-color: $color-danger-dark-10;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: $spacing-md;
+            margin-top: $spacing-sm;
+    
+            button {
+                background: $color-main-blue;
+                color: $color-secondary-cream;
+                border: none;
+                padding: $spacing-xs $spacing-sm;
+                border-radius: 5px;
+                cursor: pointer;
+    
+                &:hover {
+                    background-color: $color-moss-dark-30;
+                }
+            }
+        }
+    }     
+}

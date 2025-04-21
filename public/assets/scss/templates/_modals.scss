@@ -1,0 +1,516 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+
+// modal confirmation suppression
+.modal-delete {
+    position: fixed;
+    inset: 0; //top bottom left right
+    background-color: rgba($color-blue-dark-50, 0.6);
+    z-index: 9999;
+    @include flex-center;
+
+    &[hidden] {
+        display: none;
+    }
+
+    .modal-delete-content {
+        background-color: $color-secondary-cream;
+        padding: $spacing-lg $spacing-xl;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+        @include shadow-light;
+    }
+
+    .modal-delete-text {
+        line-height: 1.4;
+        margin-bottom: $spacing-md;
+    }
+
+    .modal-delete-actions {
+        display: flex;
+        justify-content: center;
+        gap: $spacing-sm;
+
+        .btn {
+            padding: $spacing-sm $spacing-md;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+
+            &.btn-danger {
+                background-color: $color-danger;
+                color: $color-secondary-cream;
+
+                &:hover {
+                    background-color: $color-danger-dark-10;
+                }
+            }
+
+            &.btn-cancel {
+                background-color: $color-main-sand;
+                color: $color-text;
+
+                &:hover {
+                    background-color: $color-sand-light-10;
+                }
+            }
+        }
+    }
+}
+
+// modal création de spot
+.modal-create {
+    position: fixed;
+    inset: 0;
+    background-color: rgba($color-blue-dark-50, 0.6);
+    z-index: 9999;
+    @include flex-center;
+    overflow-y: auto;
+
+    &[hidden] {
+        display: none;
+    }
+
+    .modal-create-content {
+        background-color: $color-secondary-cream;
+        padding: $spacing-lg;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 500px;
+        max-height: 95vh;
+        max-height: 95dvh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        @include shadow-light;
+
+        h2 {
+            text-align: center;
+            margin-bottom: $spacing-md;
+            font-size: $font-size-subtitle;
+            color: $color-main-blue;
+        }
+
+        form {
+            @include flex-column;
+            gap: $spacing-md;
+
+            .form-group {
+                @include flex-column;
+                gap: $spacing-xs;
+
+                label {
+                    font-weight: bold;
+                    font-size: $font-size-small;
+                }
+
+                input,
+                textarea {
+                    padding: $spacing-sm;
+                    border: 1px solid $color-main-sand;
+                    border-radius: 5px;
+                    background-color: $color-cream-light-50;
+                    font-size: $font-size-base;
+                    font-family: $font-text;
+                    color: $color-text;
+                    resize: vertical;
+
+                    &:focus {
+                        border-color: $color-main-blue;
+                        box-shadow: 0 0 0 1px rgba($color-main-blue, 0.3);
+                        outline: none;
+                    }
+
+                    &::placeholder {
+                        color: $color-text-light-30;
+                    }
+                    
+                    // empêche le navigateur d’appliquer un fond de couleur différent lors de l'autocomplétion
+                    &:-webkit-autofill {
+                        box-shadow: 0 0 0px 1000px $color-cream-light-50 inset !important;
+                        -webkit-text-fill-color: $color-text !important;
+                        font-family: $font-text;
+                    }
+                }
+
+                .error {
+                    color: $color-danger;
+                    background-color: rgba($color-danger, 0.1);
+                    font-size: $font-size-small;
+                    padding: $spacing-xs $spacing-sm;
+                    border-radius: 5px;
+                }
+
+                .description-counter {
+                    font-size: $font-size-small;
+                    color: $color-text-light-30;
+                    text-align: right;
+                    margin-top: $spacing-xs;
+
+                    &.danger {
+                        color: $color-danger;
+                    }
+                }
+
+                .custom-file-upload {
+                    @include flex-row;
+                    align-items: center;
+                    gap: $spacing-xl;
+                    padding: $spacing-sm;
+                    border: 1px solid $color-main-sand;
+                    border-radius: 5px;
+                    background-color: $color-cream-light-50;
+                
+                    input[type="file"] {
+                        display: none;
+                    }
+                
+                    .btn-upload {
+                        background-color: $color-main-blue;
+                        color: $color-secondary-cream;
+                        padding: $spacing-sm $spacing-md;
+                        border: none;
+                        border-radius: 5px;
+                        font-weight: bold;
+                        cursor: pointer;
+                        @include transition(background-color);
+                
+                        &:hover {
+                            background-color: $color-secondary-green-moss;
+                        }
+                    }
+                
+                    .file-count {
+                        font-size: $font-size-small;
+                        color: $color-text-light-30;
+                        text-align: center;
+                    }
+                }
+            }
+
+            .form-actions {
+                display: flex;
+                justify-content: center;
+                gap:  $spacing-md;
+
+                .btn {
+                    padding: $spacing-sm $spacing-md;
+                    border: none;
+                    border-radius: 5px;
+                    font-weight: bold;
+                    cursor: pointer;
+
+                    &.btn-success {
+                        background-color: $color-main-green;
+                        color: $color-secondary-cream;
+
+                        &:hover {
+                            background-color: $color-green-dark-10;
+                        }
+                    }
+
+                    &.btn-cancel {
+                        background-color: $color-main-sand;
+                        color: $color-text;
+
+                        &:hover {
+                            background-color: $color-sand-light-10;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// modal spot détaillé
+// spot détaillé
+.modal-spot {
+    position: fixed;
+    inset: 0;
+    background-color: rgba($color-blue-dark-50, 0.6);
+    z-index: 9999;
+    @include flex-center;
+    overflow-y: auto;
+
+    &[hidden] {
+        display: none;
+    }
+
+    .modal-spot-content {
+        background-color: $color-secondary-cream;
+        border-radius: 10px;
+        width: 90%;
+        max-width: 700px;
+        max-height: 95vh;
+        max-height: 95dvh;
+        overflow-y: hidden;
+        overscroll-behavior: contain;
+        @include shadow-light;
+        position: relative;
+
+        
+        .modal-spot-header {
+            position: sticky;
+            top: 0;
+            background-color: $color-main-blue;
+            color: $color-secondary-cream;
+            padding: $spacing-md;
+            padding-right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+            padding-right: var(--scrollbar-compensate, 0);
+            
+            h2 {
+                text-align: center;
+                color: inherit;
+                margin: 0;
+                font-size: $font-size-subtitle;
+            }
+
+            .modal-close {
+                font-size: 1.5rem;
+                margin-right: $spacing-md;
+                color: inherit;
+                border: none;
+                background-color: inherit;
+    
+                &:hover {
+                    color: $color-text;
+                }
+            }
+        }
+
+        .modal-spot-body {
+            display: flex;
+            flex-direction: column;
+            gap: $spacing-lg;
+            padding: $spacing-lg;
+
+            .section {
+                h3 {
+                    color: $color-main-blue;
+                    margin-bottom: $spacing-xs;
+                    font-size: $font-size-base;
+                }
+                
+                h4 {
+                    font-family: $font-text;
+                    text-transform: none;
+                    margin-bottom: $spacing-xs;
+                    font-size: $font-size-base;
+                }
+                
+                p, ul {
+                    font-size: $font-size-base;
+                }
+
+                .water-section {
+                    @include flex-column;
+                    gap: $spacing-md;
+                    margin-top: $spacing-md;
+                    align-items: center;
+                    justify-content: center;
+                
+                    @include respond(sm) {
+                        flex-direction: row;
+                        align-items: flex-start;
+                        justify-content: space-between;
+                    }
+                    
+                    .water-info {
+                        flex: 1;
+                        text-align: center;
+                        align-self: center;
+                        
+                        
+                        .water-temp {
+                            margin-top: $spacing-md;
+                            font-weight: bold;
+                            font-size: $font-size-title;
+                            color: $color-main-blue;
+                        }
+                    }
+                    
+                    .fish-species {
+                        flex: 1;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-direction: column;
+                        
+                        ul {
+                            display: flex;
+                            justify-content: center;
+                            flex-direction: column;
+                            padding-left: $spacing-md;
+                            list-style: none;
+                            li {
+                                position: relative;
+                                padding-left: 1.5em;
+                                
+                                &::before {
+                                    content : "\f578";
+                                    font-family: "Font Awesome 6 Free";
+                                    font-weight: 900;
+                                    position: absolute;
+                                    top: 0.1em;
+                                    left: 0;
+                                    color: $color-main-blue;
+                                    font-size: 1em;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .spot-detail-info {
+                @include flex-column;
+                gap: $spacing-md;
+                text-align: center;
+                
+                @include respond(sm) {
+                    @include flex-row;
+                    justify-content: center;
+                    gap: $spacing-xl * 2;
+                }
+
+                @include respond(md) {
+                    gap: $spacing-xl * 3;
+                }
+            }
+    
+            .spot-gallery {
+                display: flex;
+                flex-direction: column;
+                gap: $spacing-sm;
+    
+                .main-image {
+                    position: relative;
+    
+                    img {
+                        width: 100%;
+                        height: 200px;
+                        object-fit: cover;
+                        border-radius: 5px;
+                        @include shadow-light;
+                        cursor: zoom-in;
+
+                        @include respond(md) {
+                            height: 300px;
+                        }
+                    }
+    
+                    .photo-credit {
+                        font-size: $font-size-small;
+                        text-align: center;
+                        color: $color-text-light-30;
+                        margin-top: $spacing-xs;
+                    }
+                }
+    
+                .thumbnails {
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    gap: $spacing-sm;
+    
+                    .thumb {
+                        width: 80px;
+                        height: 60px;
+                        object-fit: cover;
+                        border-radius: 5px;
+                        cursor: pointer;
+                        border: 2px solid transparent;
+    
+                        &:hover {
+                            border-color: $color-main-blue;
+                        }
+                    }
+                }
+            }
+    
+            #map {
+                margin-top: $spacing-sm;
+                height: 250px;
+                width: 100%;
+                border-radius: 8px;
+                @include shadow-light;
+                touch-action: none;
+                pointer-events: none;
+            }
+        }
+
+        .ps__rail-y {
+            background-color: $color-cream-light-50;
+            width: 8px;
+            right: 2px !important; // optionnel, ajuste si besoin
+            border-radius: 10px;
+        }
+        
+        .ps__thumb-y {
+            background-color: $color-main-blue;
+            border-radius: 10px;
+        
+            &:hover {
+                background-color: $color-secondary-green-moss;
+            }
+        }
+    }
+}
+
+.lightbox-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba($color-blue-dark-80, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+
+    .lightbox-image {
+        max-width: 90%;
+        max-height: 80vh;
+        max-height: 80dvh;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+        position: absolute;
+        font-size: $font-size-title;
+        color: $color-secondary-cream;
+        cursor: pointer;
+        user-select: none;
+
+        &:hover {
+            color: $color-main-blue;
+        }
+    }
+
+    .lightbox-close {
+        top: 20px;
+        right: 30px;
+    }
+
+    .lightbox-prev {
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .lightbox-next {
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
