@@ -1,3 +1,5 @@
+# Interdire le listing des repertoires
+Options -Indexes
 # Active le moteur de réécriture d'URL
 RewriteEngine On
 # Condition : La demande ne doit pas correspondre à un fichier existant
