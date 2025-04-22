@@ -44,7 +44,7 @@
                             <td><?= date('d/m/Y', strtotime($user['created_at'])) ?></td>
                             <td><?= date('d/m/Y', strtotime($user['updated_at'])) ?></td>
                             <td>
-                                <?php if ($_SESSION['user_id'] != $user['user_id']): ?>
+                                <?php if ($_SESSION['entremoucheurs_user_id'] != $user['user_id']): ?>
                                     <form action="deleteUser" method="post">
                                         <input type="hidden" name="id" value="<?= $user['user_id'] ?>">
                                         <button 

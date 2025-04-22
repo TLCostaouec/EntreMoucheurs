@@ -18,7 +18,7 @@ if (!isset($_POST['id']) || !is_numeric($_POST['id'])) {
 $id = (int)$_POST['id'];
 
 // empecher de supprimer son propre compte
-if ($id !== (int)$_SESSION['user_id']) {
+if ($id !== (int)$_SESSION['entremoucheurs_user_id']) {
     deleteUser($id);
     $_SESSION['success_delete'] = "Utilisateur supprimé avec succès.";
 }

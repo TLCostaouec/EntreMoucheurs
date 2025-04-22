@@ -1,8 +1,7 @@
 <?php
 
-session_name('entremoucheurs_session');
-
 if (session_status() === PHP_SESSION_NONE) {
+    session_name('entremoucheurs_session');
     session_start();
 }
 

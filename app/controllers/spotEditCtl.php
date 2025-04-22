@@ -10,7 +10,7 @@ require_once ROOT . '/app/models/spotModel.php';
 requireLogin();
 
 $spotId = $_POST['spot_id'] ?? $_GET['id'] ?? null;
-$userId = $_SESSION['user_id'];
+$userId = $_SESSION['entremoucheurs_user_id'];
 
 if (!$spotId || !is_numeric($spotId)) {
     http_response_code(400);

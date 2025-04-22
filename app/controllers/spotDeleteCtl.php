@@ -14,7 +14,7 @@ $spotId = (int) $_POST['id'];
 $spot = getSpotById($spotId);
 
 // Vérification des droits :
-if (!$spot || ($_SESSION['user_id'] != $spot['user_id'] && !isAdmin())) {
+if (!$spot || ($_SESSION['entremoucheurs_user_id'] != $spot['user_id'] && !isAdmin())) {
     header('Location: error403');
     exit;
 }

@@ -3,7 +3,10 @@
 require_once ROOT . '/app/models/userModel.php';
 
 // Définir un nom unique de session
-session_name('entremoucheurs_session');
+if (session_status() === PHP_SESSION_NONE) {
+    session_name('entremoucheurs_session');
+    session_start();
+}
 
 function login($email, $password) {
     $user = getUserByEmail($email);
@@ -24,8 +27,9 @@ function login($email, $password) {
 function logout() {
     // Nom de session doit être le même pour pouvoir le détruire
     session_name('entremoucheurs_session');
-
+    
     if (session_status() === PHP_SESSION_NONE) {
+        session_name('entremoucheurs_session');
         session_start();
     }
 

@@ -10,10 +10,10 @@ require_once ROOT . '/app/models/spotModel.php';
 
 requireLogin();
 
-$userId = $_SESSION['user_id'];
+$userId = $_SESSION['entremoucheurs_user_id'];
 $user = getUserById($userId);
 $formType = $_POST['form_type'] ?? null;
-$userSpots = getSpotsByUser($_SESSION['user_id']);
+$userSpots = getSpotsByUser($_SESSION['entremoucheurs_user_id']);
 
 $success = null;
 $error = null;

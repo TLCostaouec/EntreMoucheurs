@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
 
             // création du spot
-            $userId = $_SESSION['user_id'];
+            $userId = $_SESSION['entremoucheurs_user_id'];
             $spotId = createSpot($name, $description, $department, $latitude, $longitude, $userId);
 
             // gestion images

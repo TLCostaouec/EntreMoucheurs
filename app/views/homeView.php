@@ -49,7 +49,9 @@
                             <img src="<?= htmlspecialchars(getFirstMediaPath($spot['spot_id'])) ?>" alt="Photo du spot <?= htmlspecialchars($spot['name']) ?>">
                         </div>
                         <div class="spot-info">
-                            <h2><?= htmlspecialchars($spot['name']) ?></h2>
+                            <div class="spot-title-wrapper">
+                                <h2><?= htmlspecialchars($spot['name']) ?></h2>
+                            </div>
                             <p><strong>Auteur :</strong> <?= htmlspecialchars($spot['pseudo']) ?></p>
                             <p><strong>Département :</strong> <?= htmlspecialchars($spot['department']) ?></p>
                             <p><strong>Description :</strong> <?= htmlspecialchars(mb_substr($spot['description'], 0, 100)) ?>...</p>
