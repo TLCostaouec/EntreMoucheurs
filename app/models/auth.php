@@ -1,9 +1,6 @@
 <?php
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_name('entremoucheurs_session');
-    session_start();
-}
+require_once ROOT . '/app/models/sessionInit.php';
 
 function isLoggedIn(): bool {
     return isset($_SESSION['entremoucheurs_user_id']);
@@ -21,7 +18,6 @@ function disableCache() {
 
 function requireLogin() {
     disableCache();
-
     if (!isLoggedIn()) {
         header('Location: login');
         exit;
@@ -30,11 +26,8 @@ function requireLogin() {
 
 function requireAdmin() {
     disableCache();
-
     if (!isAdmin()) {
         header('Location: error403');
         exit;
     }
 }
-
-?>
