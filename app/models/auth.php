@@ -1,15 +1,17 @@
 <?php
 
+session_name('entremoucheurs_session');
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 function isLoggedIn(): bool {
-    return isset($_SESSION['user_id']);
+    return isset($_SESSION['entremoucheurs_user_id']);
 }
 
 function isAdmin(): bool {
-    return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
+    return isset($_SESSION['entremoucheurs_role']) && $_SESSION['entremoucheurs_role'] === 'admin';
 }
 
 function disableCache() {

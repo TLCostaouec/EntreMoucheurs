@@ -5,7 +5,7 @@
     
         <h1>Espace Administrateur</h1>
         
-        <p class="welcome">Bienvenue, <?= htmlspecialchars($_SESSION['email']) ?> !</p>
+        <p class="welcome">Bienvenue, <?= htmlspecialchars($_SESSION['entremoucheurs_email']) ?> !</p>
         
         <!-- GESTION UTILISATEURS -->
         <section id="users-section">
