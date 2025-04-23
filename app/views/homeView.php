@@ -84,22 +84,4 @@
     </div>
 </div>
 
-<script>
-function loadVideo(container) {
-    const iframe = document.createElement('iframe');
-    iframe.setAttribute('src', 'https://www.youtube-nocookie.com/embed/c2-qMmPE5X0?autoplay=1');
-    iframe.setAttribute('title', 'YouTube video player');
-    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
-    iframe.setAttribute('allowfullscreen', '');
-    iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-    iframe.setAttribute('frameborder', '0');
-    iframe.style.width = '100%';
-    iframe.style.height = '100%';
-    
-    container.innerHTML = '';
-    container.appendChild(iframe);
-}
-</script>
-
-
 <?php require ROOT . '/app/views/templates/footer.php'; ?>

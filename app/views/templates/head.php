@@ -2,13 +2,23 @@
 // DOIT être tout en haut, avant le moindre espace ou balise HTML
 ob_start('minify_output');
 
+/**
+ * Minifie le code HTML en supprimant les espaces inutiles.
+ *
+ * - Supprime les espaces après les balises : `>   `
+ * - Supprime les espaces avant les balises : `   <`
+ * - Réduit les multiples espaces consécutifs à un seul
+ *
+ * @param string $buffer Le contenu HTML à minifier.
+ * @return string Le contenu minifié.
+ */
 function minify_output($buffer) {
     $search = [
-        '/\>[^\S ]+/s',     // supprime les espaces après les balises
-        '/[^\S ]+\</s',     // supprime les espaces avant les balises
-        '/(\s)+/s'          // remplace les séquences de plusieurs espaces par un seul
+        '/\>[^\S ]+/s',
+        '/[^\S ]+\</s',
+        '/(\s)+/s'
     ];
-    $replace = ['>', '<', '\\1'];
+    $replace = ['>', '<', '\\1']; // Garde un seul espace
     return preg_replace($search, $replace, $buffer);
 }
 ?>

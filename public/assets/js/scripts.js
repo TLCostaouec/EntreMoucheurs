@@ -30,11 +30,20 @@ if (burger && nav) {
     });
 }
 
-// empêche le scroll du site lorsque la modal est ouverte
+/**
+ * Empêche le défilement de la page en verrouillant le scroll du body.
+ *
+ * @return {void}
+ */
 function lockBodyScroll() {
     document.body.style.overflow = 'hidden';
 }
-// réactive le scroll du site lors de la fermeture de la modal
+
+/**
+ * Réactive le défilement de la page en restaurant le scroll du body.
+ *
+ * @return {void}
+ */
 function unlockBodyScroll() {
     document.body.style.overflow = '';
 }
@@ -262,6 +271,17 @@ if (createSpotForm) {
     })
 }
 
+/**
+ * Charge et affiche des données aquatiques depuis les APIs Hub'Eau :
+ * - station la plus proche
+ * - température récente de l'eau
+ * - espèces piscicoles recensées
+ *
+ * @param {number} lat - Latitude du point à analyser.
+ * @param {number} lon - Longitude du point à analyser.
+ * @param {HTMLElement} container - Conteneur HTML dans lequel injecter les résultats.
+ * @return {void}
+ */
 function fetchHubEauData(lat, lon, container) {
     // API Hub'Eau - température de l'eau
     // récupération de la station la plus proche
@@ -435,6 +455,13 @@ document.addEventListener("click", function (e) {
     }
 });
 
+/**
+ * Ouvre une lightbox avec navigation pour un ensemble d'images.
+ *
+ * @param {string[]} images - Tableau de chemins d'images à afficher.
+ * @param {number} [startIndex=0] - Index de départ dans le tableau d'images.
+ * @return {void}
+ */
 function openLightbox(images, startIndex = 0) {
     let current = startIndex;
 
@@ -649,6 +676,12 @@ if (spotEditModal && openSpotEditBtns.length && cancelEditBtn) {
     }
 }
 
+/**
+ * Charge dynamiquement les assets de Leaflet (JS + CSS) si nécessaire.
+ * Évite les doublons et retourne une Promise pour chaîner les actions après chargement.
+ *
+ * @returns {Promise<void>} Promise résolue une fois Leaflet chargé.
+ */
 function loadLeafletAssets() {
     return new Promise((resolve, reject) => {
         // ne rien faire si Leaflet est déjà présent
@@ -672,6 +705,12 @@ function loadLeafletAssets() {
     });
 }
 
+/**
+ * Intègre une vidéo YouTube (sans cookie) dans un conteneur HTML donné.
+ *
+ * @param {HTMLElement} container - L'élément HTML où injecter la vidéo.
+ * @return {void}
+ */
 function loadVideo(container) {
     const iframe = document.createElement('iframe');
     iframe.setAttribute('src', 'https://www.youtube-nocookie.com/embed/c2-qMmPE5X0?autoplay=1');
